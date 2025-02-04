@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: pink;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        .buttons {
+            margin-top: 40px;
+        }
+
+        .btn {
+            font-size: 22px;
+            padding: 15px 40px;
+            margin: 15px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s ease-in-out;
+        }
+
+        .yes {
+            background: #ff4d6d;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0px 5px 10px rgba(255, 77, 109, 0.5);
+        }
+
+        .no {
+            background: #ff1744;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0px 5px 10px rgba(255, 23, 68, 0.5);
+        }
+
+        .gif-container, .love-message {
+            display: none;
+            margin-top: 40px;
+        }
+
+        .gif-container img {
+            width: 300px;
+        }
+
+        .gif-text {
+            font-size: 22px;
+            color: white;
+            width: 60%;
+            background: rgba(255, 77, 109, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0px 5px 15px rgba(255, 77, 109, 0.5);
+        }
+
+        .love-message p {
+            font-size: 22px;
+            color: white;
+            width: 70%;
+            background: rgba(255, 77, 109, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0px 5px 15px rgba(255, 77, 109, 0.5);
+            margin-top: 20px;
+        }
+
+        .no-text {
+            margin-top: 20px;
+            font-size: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="valentineText">Will You Be My Valentine? ❤️</h1>
+
+    <div class="buttons" id="buttonContainer">
+        <button class="btn yes" onclick="showLove()">Yes</button>
+        <button class="btn no" onclick="changeNoText(this)">No</button>
+    </div>
+
+    <div class="gif-container" id="loveGif">
+        <img src="C:\Users\Lenovo\Downloads\Love You Lots Kiss GIF - Love You Lots Kiss Peachcat - Discover & Share GIFs.gif">
+        <div class="gif-text">Yayyyy! I love you the most! ❤️</div>
+    </div>
+
+    <div class="love-message" id="loveMessage">
+        <p>
+            Haleema, my love, you are the most beautiful part of my world. Every moment without you feels incomplete. 
+            You are my smile, the reason behind my every happiness. 
+            Today, as you become my Valentine, I feel like the luckiest person alive. 
+            Your every word, every laugh fills my life with colors. 
+            I promise to always stand by your side, to walk with you in every moment. 
+            You are my everything, and I love you beyond words! ❤️💖
+        </p>
+    </div>
+
+    <div id="noTextContainer" class="no-text"></div>
+
+    <script>
+        let noButton = document.querySelector('.no');
+        let yesButton = document.querySelector('.yes');
+        let buttonContainer = document.getElementById('buttonContainer');
+        let gifContainer = document.getElementById('loveGif');
+        let loveMessage = document.getElementById('loveMessage');
+        let noTextContainer = document.getElementById('noTextContainer');
+
+        let noPhrases = [
+            "Please reconsider! 💕", 
+            "Don't break my heart, please! 😢", 
+            "Think again, my love! ❤️", 
+            "Last chance to say Yes! 😘"
+        ];
+
+        let phraseIndex = 0;
+
+        function changeNoText(button) {
+            // Update phrase
+            noTextContainer.innerText = noPhrases[phraseIndex];
+            
+            // Change phrase index
+            phraseIndex = (phraseIndex + 1) % noPhrases.length;
+
+            // Grow the Yes button
+            let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize + 5) + "px";
+        }
+
+        function showLove() {
+            gifContainer.style.display = "block";
+            loveMessage.style.display = "block";
+            buttonContainer.style.display = "none";
+            noTextContainer.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
